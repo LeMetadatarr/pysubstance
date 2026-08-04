@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pysubstance"
+dynamic = ["version"]
+description = "26 pharma/drug-registry bulk harvesters (national drug registries, ATC/INN catalogues, FDA/EMA/DrugBank/ChEMBL/PubChem) grouped on the harvestkit engine."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.9"
+authors = [
+    { name = "JarbasAi", email = "jarbasai@mailfence.com" },
+]
+keywords = ["pharma", "drugs", "atc", "inn", "fda", "ema", "drugbank", "chembl", "pubchem", "harvestkit", "scraper"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Intended Audience :: Developers",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "harvestkit>=0.1.0a1",
+    "requests>=2.25",
+    "beautifulsoup4>=4.10",
+]
+
+[project.optional-dependencies]
+stealth = ["unblock_requests"]
+hf = ["datasets", "huggingface_hub", "pyarrow"]
+test = ["pytest"]
+
+[project.scripts]
+pysubstance-harvest = "pysubstance.harvest:main"
+
+[project.urls]
+Homepage = "https://github.com/LeMetadatarr/pysubstance"
+
+[tool.setuptools.packages.find]
+include = ["pysubstance*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "pysubstance.version.__version__"}
