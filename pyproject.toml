@@ -26,7 +26,8 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
-    "harvestkit>=0.1.0a1",
+    # TODO: switch to "harvestkit>=0.1.0a1" once harvestkit is published to PyPI
+    "harvestkit @ git+https://github.com/LeMetadatarr/harvestkit@dev",
     "requests>=2.25",
     "beautifulsoup4>=4.10",
 ]
