@@ -30,6 +30,7 @@ dependencies = [
     "harvestkit @ git+https://github.com/LeMetadatarr/harvestkit@dev",
     "requests>=2.25",
     "beautifulsoup4>=4.10",
+    "openpyxl>=3.0",
 ]
 
 [project.optional-dependencies]
