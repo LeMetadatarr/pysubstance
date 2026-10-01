@@ -35,7 +35,12 @@ dependencies = [
 
 [project.optional-dependencies]
 stealth = ["unblock_requests"]
-hf = ["datasets", "huggingface_hub", "pyarrow"]
+# datasets carries an fsspec ceiling. With no floor, a sibling dependency that
+# wants a newer fsspec is satisfied by walking datasets backwards instead, and
+# nothing says so: the probe fsspec<2023.1 takes this extra to datasets 2.14.4
+# and huggingface-hub 0.17.3. With the floor the same input is unsatisfiable and
+# the resolver names the conflict, which is the better failure.
+hf = ["datasets>=4", "huggingface_hub", "pyarrow"]
 test = ["pytest"]
 
 [project.scripts]
